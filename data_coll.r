@@ -22,3 +22,7 @@ datelist[1:3]          # 확인
 
 service_key <- ""  # 인증키 입력
 
+
+#---# 요청 목록 만들기
+url_list <- list()
+cnt <- 0
