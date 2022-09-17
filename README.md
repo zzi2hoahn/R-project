@@ -1,40 +1,28 @@
-
-
-============================================================
-
-09월 14일
+# 9월14일
 
 [03-1 클로링 준비]
 
 1. 작업 폴더 설정하기
 
-#install.packages("rstudioapi")   # rstudioapi 설치                         
-setwd(dirname(rstudioapi::getSourceEditorContext()$path)) # 작업폴더 설정
-getwd()   # 확인
+rstudioapi라는 라이브러리를 이용하면, 스크립트가 저장된 위츠를 작업 폴더로 쉽게 설정 가능.
+install.package() 함수로 라이브러리 패키지 설치 가능
+
+setwd() 함수 현재위치 설정
+getwd() 함수 설정된 작업 폴더 출력
 
 2. 수집 대상 지역 설정하기
 
-+ read.csv() 함수는 지역코드 불러옴.
-+ as.character() 함수는 행정구역 (loc$code)을 문자 변환.
-+ head() 함수 결과 출력함
-
-loc <- read.csv("./sigun_code.csv", fileEncoding="UTF-8")  #  지역코드
-loc$code <- as.character(loc$code) # 행정구역명 문자 변환     
-head(loc, 2) # 확인
+read.csv() 함수는 지역코드 출력
+as.character() 함수는 행정구역 출력 문자변환
+head() 함수 코드 추출 결과 출력.
 
 3. 수집 기간 설정하기
 
-datelist <- seq(from = as.Date('2021-01-01'), # 시작
-                to   = as.Date('2021-12-31'), # 종료
-                by    = '1 month')            # 단위
-datelist <- format(datelist, format = '%Y%m') # 형식변환(YYYY-MM-DD => YYYYMM) 
-datelist[1:3]          # 확인
+seq (from : 시작 to : 종료 by : 단위)
+format() 함수 형식변환 가능
 
-+ format(format = '%Y%m') 코드로 형식변환 -> YYYY-MM-DD
 
-============================================================
-
-09월 07일
+# 09월 07일
 
 [02-2 API 인증키 얻기]
 
