@@ -24,10 +24,11 @@ kakao_key = "f3775807c814573fb9cfd3dd3e7efa7c"       # 인증키
 
 #---# [2단계: 지오코딩]
 
-#library(httr)        # install.packages('httr')
-#library(RJSONIO)     # install.packages('RJSONIO')
-#library(data.table)  # install.packages('data.table')
-#library(dplyr)       # install.packages('dplyr')
+library(httr)        
+library(RJSONIO)     
+library(data.table)  
+library(dplyr)       
+
 
 for(i in 1:nrow(apt_juso)){ 
   #---# 에러 예외처리 구문 시작
@@ -61,7 +62,7 @@ juso_geocoding <- rbindlist(add_list)   # 리스트를 데이터프레임 변환
 juso_geocoding$coord_x <- as.numeric(juso_geocoding$coord_x) # 좌표값 숫자형 변환
 juso_geocoding$coord_y <- as.numeric(juso_geocoding$coord_y)
 juso_geocoding <- na.omit(juso_geocoding)   # 결측치 제거
-dir.create("./05_geocoding")   # 새로운 폴더 생성
+dir.create("05_geocoding")   # 새로운 폴더 생성
 save(juso_geocoding, file="./05_geocoding/05_juso_geocoding.rdata") # 저장
 write.csv(juso_geocoding, "./05_geocoding/05_juso_geocoding.csv")
 
@@ -78,9 +79,12 @@ data.frame(mpg[!duplicated(mpg), ])  # 제조사 중복값 제거
 
 #---# 2) 웹페이지 자료 가져오기
 
-library(httr)   # install.packages("httr")
-library(rjson)  # install.packages("rjson")
-library(dplyr)  # install.packages("dplyr")
+#library(httr)
+install.packages("httr")
+#library(rjson)
+install.packages("rjson")
+#library(dplyr)
+install.packages("dplyr")
 #---# GET()으로 html 페이지 가져오기
 web_page <- GET('http://www.w3.org/Protocols/rfc2616/rfc2616.html') 
 web_page <- web_page %>% content(as = 'text')  # html 페이지 텍스트만 저장

@@ -123,7 +123,7 @@ tail(apt_price, 2) # 확인
 
 #---# [2단계: 통합 데이터 저장히기]
 
-dir.create("./03_integrated") # 새로운 폴더 생성
+dir.create("03_integrated") # 새로운 폴더 생성
 save(apt_price, file = "./03_integrated/03_apt_price.rdata") # 저장
 write.csv(apt_price, "./03_integrated/03_apt_price.csv")
 

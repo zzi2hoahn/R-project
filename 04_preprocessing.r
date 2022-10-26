@@ -28,8 +28,9 @@ head(apt_price$price, 2)                                  # 확인
 
 #---# [1단계: 매매 연월일, 연월 데이터 만들기]
 
-library(lubridate)  # install.packages("lubridate") / install.packages("cli") 
-library(dplyr)      # install.packages("dplyr")
+
+library(dplyr)
+library(lubridate)
 apt_price <- apt_price %>% mutate(ymd=make_date(year, month, day))  # 연월일
 apt_price$ym <- floor_date(apt_price$ymd, "month")                  # 연월
 head(apt_price, 2)                                                  # 확인
@@ -48,7 +49,7 @@ head(apt_price$apt_nm, 30)  # 아파트 이름 현황
 apt_price$apt_nm <- gsub("\\(.*","", apt_price$apt_nm) # 괄호이후 삭제
 head(apt_price$apt_nm, 30)                             # 아파트 이름 확인
 
-loc <- read.csv(""D:\r_project\sigun_code.csv"", fileEncoding="UTF-8")  # 지역코드 불러오기
+loc <- read.csv("D:/r_project/sigun_code.csv", fileEncoding="UTF-8")  # 지역코드 불러오기
 apt_price <- merge(apt_price, loc, by = 'code')         # 지역명 결합하기
 apt_price$juso_jibun <- paste0(apt_price$addr_2, " ", apt_price$dong," ",
                                apt_price$jibun," ",apt_price$apt_nm) # 주소조합
@@ -95,7 +96,7 @@ head(apt_price, 2)  # 확인
 #---# [2단계: 저장]
 
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
-dir.create("./04_preprocess")   # 새로운 폴더 생성
+dir.create("04_preprocess")   # 새로운 폴더 생성
 save(apt_price, file = "./04_preprocess/04_preprocess.rdata") # 저장
 write.csv(apt_price, "./04_preprocess/04_preprocess.csv") 
 
