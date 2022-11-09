@@ -48,6 +48,13 @@ circle_marker_rdata 파일을 불러오고 avg.fomula 라는 마커 클러스터
 leaflet()함수로 나타낸 지도에 addCircleMarkers()함수로 avg.formula라는 마커 클러스터링 기능 추가
 lng 경도 / lat 위도 나타냄.
 
+08-01 관심 지역 데이터만 추출하기
+
+1. 데이터 준비하기
+7장 래스터 데이터 load()함수로 데이터 불러옴
+
+2. 서울에서 가장 비싼 지역 찾기
+tmap 이라는 지도 시작화 패키지 사용하여 지도 표시 tmap 패키지 설치.
 
 
 # 10월 26일
